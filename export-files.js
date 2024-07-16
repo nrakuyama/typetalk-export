@@ -29,16 +29,16 @@ const main = async () => {
     })
     .parseSync();
 
-  const { csvfile, output }  = args;
+  const { csvfile, token, output }  = args;
   const records = parse(fs.readFileSync(csvfile), { columns: true });
   fs.mkdirSync(output, { recursive: true });
-  const headers = { 'X-TYPETALK-TOKEN': args.token };
+  const headers = { 'X-TYPETALK-TOKEN': token };
 
   for (const r of records) {
     const url = r['添付ファイル URL (API)'];
     const title = r['添付ファイル名'];
     const rawBody = (await got.get(url, { headers })).rawBody;
-    fs.writeFileSync(`${args.output}/${title}`, rawBody);
+    fs.writeFileSync(`${output}/${title}`, rawBody);
     console.log(title);
   }
 }
