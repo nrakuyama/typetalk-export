@@ -12,5 +12,15 @@ Typetalk Tokenをメモする
 ### スクリプト実行
 
 * このリポジトリをcloneする
+    ```
+    git clone git@github.com:nrakuyama/typetalk-export.git
+    cd typetalk-export
+    ```
 * 初期設定を行う
+    ```
+    npm i
+    ```
 * コマンドを実行する
+    ```
+    node export-files.js -c attachments.csv -t メモしたボットのトークン -o ./output
+    ```
